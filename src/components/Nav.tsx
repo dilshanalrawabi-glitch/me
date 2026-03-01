@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { clsx } from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { href: "#hero", label: "Home" },
@@ -41,23 +42,26 @@ export function Nav() {
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link, i) => (
             <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm text-surface-300 hover:text-accent transition-colors"
-              >
-                {link.label}
-              </Link>
+              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href={link.href}
+                  className="text-sm text-surface-300 hover:text-accent transition-colors block"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             </li>
           ))}
         </ul>
 
-        <button
+        <motion.button
           type="button"
           aria-label="Toggle menu"
           className="md:hidden p-2 text-surface-300 hover:text-accent"
           onClick={() => setMobileOpen((o) => !o)}
+          whileTap={{ scale: 0.9 }}
         >
           <svg
             className="w-6 h-6"
@@ -81,26 +85,40 @@ export function Nav() {
               />
             )}
           </svg>
-        </button>
+        </motion.button>
       </nav>
 
-      {mobileOpen && (
-        <div className="md:hidden border-t border-white/5 bg-surface-950/95 backdrop-blur-md">
-          <ul className="section-padding py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block text-surface-300 hover:text-accent transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="md:hidden border-t border-white/5 bg-surface-950/95 backdrop-blur-md overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <ul className="section-padding py-4 flex flex-col gap-4">
+              {navLinks.map((link, i) => (
+                <li key={link.href}>
+                  <motion.div
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="block text-surface-300 hover:text-accent transition-colors py-1"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

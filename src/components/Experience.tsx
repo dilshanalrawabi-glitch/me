@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { AnimatedSection, motionListItem } from "@/components/AnimatedSection";
+
 const experience = [
   {
     role: "Software Developer",
@@ -21,7 +26,7 @@ const experience = [
 export function Experience() {
   return (
     <section id="experience" className="section-padding">
-      <div className="container-narrow">
+      <AnimatedSection className="container-narrow">
         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
           Experience
         </h2>
@@ -31,9 +36,16 @@ export function Experience() {
 
         <ul className="mt-12 space-y-10">
           {experience.map((job, i) => (
-            <li
+            <motion.li
               key={i}
+              custom={i}
+              variants={motionListItem}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
               className="relative pl-8 border-l-2 border-white/10 hover:border-accent/50 transition-colors"
+              whileHover={{ x: 4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
               <span className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent/80" />
               <div className="flex flex-wrap items-baseline gap-2">
@@ -47,10 +59,10 @@ export function Experience() {
                 {[job.location, job.period].filter(Boolean).join(" · ")}
               </p>
               <p className="mt-3 text-surface-400">{job.description}</p>
-            </li>
+            </motion.li>
           ))}
         </ul>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

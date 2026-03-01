@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { AnimatedSection, motionListItem } from "@/components/AnimatedSection";
+
 const projects = [
   {
     title: "Project one",
@@ -25,7 +30,7 @@ const projects = [
 export function Projects() {
   return (
     <section id="projects" className="section-padding">
-      <div className="container-narrow">
+      <AnimatedSection className="container-narrow">
         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
           Projects
         </h2>
@@ -35,12 +40,21 @@ export function Projects() {
 
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
-            <li key={i}>
-              <a
+            <motion.li
+              key={i}
+              custom={i}
+              variants={motionListItem}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <motion.a
                 href={project.href}
                 target={project.href.startsWith("http") ? "_blank" : undefined}
                 rel={project.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="group block rounded-xl border border-white/10 bg-surface-900/50 p-6 hover:border-accent/30 hover:bg-surface-900/80 transition-all"
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.99 }}
               >
                 <h3 className="font-display text-lg font-semibold text-surface-50 group-hover:text-accent transition-colors">
                   {project.title}
@@ -58,11 +72,11 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </a>
-            </li>
+              </motion.a>
+            </motion.li>
           ))}
         </ul>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }
