@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f0f12;
+  --bg-elevated: #1a1a1f;
+  --text: #f7f7f8;
+  --text-muted: #91919f;
+  --accent: #d4a853;
+  --accent-hover: #e8c97a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-6 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-24;
+  }
+  .container-narrow {
+    @apply mx-auto max-w-4xl;
+  }
+  .container-wide {
+    @apply mx-auto max-w-6xl;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Gradient orbs for hero */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.gradient-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 168, 83, 0.25) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+}
+
+.gradient-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(100, 80, 200, 0.15) 0%, transparent 70%);
+  bottom: -80px;
+  left: -80px;
+}
