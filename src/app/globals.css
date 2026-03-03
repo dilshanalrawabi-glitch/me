@@ -79,3 +79,22 @@ body {
   bottom: -80px;
   left: -80px;
 }
+
+/* About section shine on hover */
+@keyframes about-shine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.about-card-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(212, 168, 83, 0.03) 45%,
+    rgba(212, 168, 83, 0.08) 50%,
+    transparent 55%
+  );
+  background-size: 200% 100%;
+}
+.group:hover .about-card-shine {
+  animation: about-shine 1.2s ease-in-out;
+}
