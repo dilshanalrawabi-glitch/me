@@ -98,3 +98,21 @@ body {
 .group:hover .about-card-shine {
   animation: about-shine 1.2s ease-in-out;
 }
+
+/* User interaction animations */
+@keyframes icon-wiggle {
+  0%, 100% { transform: scale(1.1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-6deg); }
+  75% { transform: scale(1.1) rotate(6deg); }
+}
+
+@keyframes focus-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.25); }
+  50% { box-shadow: 0 0 0 6px rgba(212, 168, 83, 0); }
+}
+
+/* Focus visible ring animation for keyboard users */
+.focus-ring-accent:focus-visible {
+  outline: none;
+  animation: focus-pulse 1.5s ease-in-out 2;
+}

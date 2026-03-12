@@ -123,7 +123,7 @@ export function Projects() {
                   href={proj.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="group block h-full rounded-2xl border border-white/10 bg-surface-950/70 backdrop-blur-sm p-6 sm:p-7 overflow-hidden relative"
+                  className="group block h-full rounded-2xl border border-white/10 bg-surface-950/70 backdrop-blur-sm p-6 sm:p-7 overflow-hidden relative focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]"
                   whileHover={{
                     y: -6,
                     borderColor: "rgba(212,168,83,0.25)",
@@ -151,19 +151,23 @@ export function Projects() {
                   </div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {proj.tags.map((tag) => (
-                      <span
+                    {proj.tags.map((tag, ti) => (
+                      <motion.span
                         key={tag}
-                        className="rounded-lg bg-white/5 border border-white/5 px-2.5 py-1 text-xs text-surface-400 group-hover:border-accent/20 group-hover:text-accent/90 transition-colors"
+                        className="rounded-lg bg-white/5 border border-white/5 px-2.5 py-1 text-xs text-surface-400 group-hover:border-accent/20 group-hover:text-accent/90 transition-colors inline-block"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ delay: ti * 0.03 }}
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                     {isExternal ? "View live" : "View project"}
-                    <LinkIcon external={isExternal} />
+                    <span className="inline-block group-hover:translate-x-0.5 transition-transform duration-200">
+                      <LinkIcon external={isExternal} />
+                    </span>
                   </span>
                 </motion.a>
               </motion.li>

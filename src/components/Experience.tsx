@@ -43,11 +43,15 @@ export function Experience() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="relative pl-8 border-l-2 border-white/10 hover:border-accent/50 transition-colors"
-              whileHover={{ x: 4 }}
+              className="relative pl-8 border-l-2 border-white/10 hover:border-accent/50 transition-colors duration-300 group"
+              whileHover={{ x: 6 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
-              <span className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent/80" />
+              <motion.span
+                className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-accent/80"
+                whileHover={{ scale: 1.3, boxShadow: "0 0 16px rgba(212,168,83,0.5)" }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              />
               <div className="flex flex-wrap items-baseline gap-2">
                 <h3 className="font-display text-xl font-semibold text-surface-50">
                   {job.role}

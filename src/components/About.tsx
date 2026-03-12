@@ -131,7 +131,7 @@ export function About() {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
                 <span
-                  className="text-2xl opacity-90 group-hover:scale-110 transition-transform duration-300"
+                  className="text-2xl opacity-90 inline-block group-hover:scale-110 group-hover:animate-icon-wiggle transition-transform duration-300"
                   aria-hidden
                 >
                   {h.icon}

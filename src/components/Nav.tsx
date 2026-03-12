@@ -34,24 +34,25 @@ export function Nav() {
       )}
     >
       <nav className="container-wide section-padding flex items-center justify-between !py-10">
-        <Link
-          href="#hero"
-          className="font-display text-xl font-semibold tracking-tight text-surface-50 hover:text-accent transition-colors"
-        >
-          MD
-        </Link>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+          <Link
+            href="#hero"
+            className="font-display text-xl font-semibold tracking-tight text-surface-50 hover:text-accent transition-colors duration-300 inline-block"
+          >
+            MD
+          </Link>
+        </motion.div>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link, i) => (
+        <ul className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
             <li key={link.href}>
-              <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-surface-300 hover:text-accent transition-colors block"
-                >
-                  {link.label}
-                </Link>
-              </motion.div>
+              <Link
+                href={link.href}
+                className="relative px-4 py-2.5 text-sm text-surface-300 hover:text-accent transition-colors duration-300 block group"
+              >
+                {link.label}
+                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-accent rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+              </Link>
             </li>
           ))}
         </ul>
@@ -59,9 +60,10 @@ export function Nav() {
         <motion.button
           type="button"
           aria-label="Toggle menu"
-          className="md:hidden p-2 text-surface-300 hover:text-accent"
+          className="md:hidden p-2.5 rounded-lg text-surface-300 hover:text-accent hover:bg-white/5 transition-colors"
           onClick={() => setMobileOpen((o) => !o)}
           whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
         >
           <svg
             className="w-6 h-6"
@@ -70,19 +72,42 @@ export function Nav() {
             viewBox="0 0 24 24"
           >
             {mobileOpen ? (
-              <path
+              <motion.path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M6 18L18 6M6 6l12 12"
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                transition={{ duration: 0.2 }}
               />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <>
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16"
+                  initial={false}
+                  animate={{ opacity: 1 }}
+                />
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 12h16"
+                  initial={false}
+                  animate={{ opacity: 1 }}
+                />
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 18h16"
+                  initial={false}
+                  animate={{ opacity: 1 }}
+                />
+              </>
             )}
           </svg>
         </motion.button>

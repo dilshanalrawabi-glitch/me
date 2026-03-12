@@ -53,9 +53,9 @@ export function Skills() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.06, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="rounded-lg border border-white/10 bg-surface-900/50 px-4 py-2 text-sm text-surface-300 hover:border-accent/30 hover:text-accent transition-colors cursor-default"
+                    className="rounded-lg border border-white/10 bg-surface-900/50 px-4 py-2 text-sm text-surface-300 hover:border-accent/30 hover:text-accent transition-colors cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-900"
                   >
                     {skill}
                   </motion.li>
