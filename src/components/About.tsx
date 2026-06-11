@@ -1,23 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
-  },
-};
+import { Component, Server, GraduationCap, MapPin, type LucideIcon } from "lucide-react";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { fadeUpItem } from "@/lib/motion";
 
 const highlightCard = {
   hidden: { opacity: 0, y: 24, scale: 0.96 },
@@ -33,83 +20,62 @@ const highlightCard = {
   }),
 };
 
-const highlights = [
+const highlights: { label: string; icon: LucideIcon; desc: string }[] = [
   {
     label: "React.js & modern frontend",
-    icon: "⚛️",
+    icon: Component,
     desc: "Building fast UIs",
   },
   {
     label: "Python for backend & scripts",
-    icon: "🐍",
+    icon: Server,
     desc: "APIs & tooling",
   },
   {
     label: "BCA, graduated 2023",
-    icon: "🎓",
+    icon: GraduationCap,
     desc: "Computer applications",
   },
   {
     label: "Based in Qatar",
-    icon: "📍",
+    icon: MapPin,
     desc: "Al Rawabi Group",
   },
 ];
 
 export function About() {
   return (
-    <section id="about" className="section-padding bg-surface-900/30 relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-[0.07] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
-        }}
-        aria-hidden
+    <Section id="about" variant="alt" glow="center" container="narrow">
+      <SectionHeader
+        eyebrow="Who I am"
+        title="About"
+        accent="me"
+        description="Software developer focused on modern web experiences."
       />
 
       <motion.div
-        className="container-narrow relative"
+        variants={fadeUpItem}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={container}
+        viewport={{ once: true, amount: 0.2 }}
+        className="mt-10 relative group"
       >
-        <motion.div variants={item} className="text-center mb-4">
-          <span className="text-accent font-mono text-sm tracking-[0.3em] uppercase">
-            Who I am
-          </span>
-        </motion.div>
-        <motion.h2
-          variants={item}
-          className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center"
-        >
-          About <span className="text-accent relative inline-block">me</span>
-        </motion.h2>
+        <div className="relative rounded-2xl border border-white/10 bg-surface-950/60 backdrop-blur-sm p-8 sm:p-10 overflow-hidden">
+          <div
+            className="absolute inset-0 about-card-shine opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            aria-hidden
+          />
+          <p className="text-surface-300 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto text-center relative">
+            A <span className="text-accent font-medium">Software Developer</span> at{" "}
+            <span className="text-accent">Al Rawabi Group of Companies</span>, Qatar, specializing in building fast, scalable, and accessible frontend applications using React.js. Passionate about creating seamless user experiences and writing clean, maintainable code. I also leverage Python for backend development and automation when needed, allowing me to contribute across multiple parts of the development stack.
+          </p>
+        </div>
+      </motion.div>
 
-        {/* Main bio card with border glow */}
-        <motion.div
-          variants={item}
-          className="mt-10 relative group"
-        >
-          <div className="relative rounded-2xl border border-white/10 bg-surface-950/60 backdrop-blur-sm p-8 sm:p-10 overflow-hidden">
-            <div
-              className="absolute inset-0 about-card-shine opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-              aria-hidden
-            />
-            <p className="text-surface-300 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto text-center relative">
-              I&apos;m a <span className="text-surface-100 font-medium">BCA graduate (2023)</span> and{" "}
-              <span className="text-accent font-medium">Software Developer</span> at{" "}
-              <span className="text-accent">Al Rawabi Group of Companies</span> in Qatar. I focus on
-              building fast, accessible frontends with React.js and enjoy dipping into Python for
-              backend and tooling when needed.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Highlight cards */}
-        <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {highlights.map((h, i) => (
+      <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {highlights.map((h, i) => {
+          const Icon = h.icon;
+          return (
             <motion.li
               key={h.label}
               custom={i}
@@ -117,7 +83,7 @@ export function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="h-full"
+              className="h-full list-none"
             >
               <motion.div
                 className="h-full rounded-xl border border-white/10 bg-surface-900/80 backdrop-blur-sm p-5 flex flex-col gap-2 group cursor-default"
@@ -131,10 +97,10 @@ export function About() {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
                 <span
-                  className="text-2xl opacity-90 inline-block group-hover:scale-110 group-hover:animate-icon-wiggle transition-transform duration-300"
+                  className="text-accent opacity-90 inline-block group-hover:scale-110 group-hover:animate-icon-wiggle transition-transform duration-300"
                   aria-hidden
                 >
-                  {h.icon}
+                  <Icon className="w-6 h-6" strokeWidth={1.8} />
                 </span>
                 <span className="font-display font-semibold text-surface-100 text-sm sm:text-base">
                   {h.label}
@@ -142,9 +108,9 @@ export function About() {
                 <span className="text-surface-500 text-xs sm:text-sm">{h.desc}</span>
               </motion.div>
             </motion.li>
-          ))}
-        </ul>
-      </motion.div>
-    </section>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }

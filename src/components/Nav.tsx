@@ -33,7 +33,7 @@ export function Nav() {
           : "bg-transparent"
       )}
     >
-      <nav className="container-wide section-padding flex items-center justify-between !py-10">
+      <nav className="container-wide px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-4 flex items-center justify-between">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
           <Link
             href="#hero"
@@ -122,7 +122,7 @@ export function Nav() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <ul className="section-padding py-4 flex flex-col gap-4">
+            <ul className="px-6 sm:px-8 py-4 flex flex-col gap-4">
               {navLinks.map((link, i) => (
                 <li key={link.href}>
                   <motion.div

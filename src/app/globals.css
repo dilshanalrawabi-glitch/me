@@ -10,6 +10,20 @@
   --accent: #d4a853;
   --accent-hover: #e8c97a;
   --border: rgba(255, 255, 255, 0.08);
+
+  /* shadcn semantic tokens (mapped to portfolio theme) */
+  --background: #0f0f12;
+  --foreground: #f7f7f8;
+  --card: #1a1a1f;
+  --card-foreground: #f7f7f8;
+  --primary: #d4a853;
+  --primary-foreground: #0f0f12;
+  --secondary: #41414a;
+  --secondary-foreground: #f7f7f8;
+  --muted: #41414a;
+  --muted-foreground: #91919f;
+  --accent-foreground: #0f0f12;
+  --ring: #d4a853;
 }
 
 html {
@@ -44,6 +58,9 @@ body {
   }
   .text-balance {
     text-wrap: balance;
+  }
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-surface-950/60 backdrop-blur-sm;
   }
 }
 

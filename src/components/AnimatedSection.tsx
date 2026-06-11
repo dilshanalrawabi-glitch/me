@@ -2,6 +2,14 @@
 
 import { motion } from "framer-motion";
 
+export {
+  staggerContainer,
+  fadeUpItem,
+  staggerCard,
+  motionListItem,
+  springTap,
+} from "@/lib/motion";
+
 type AnimatedSectionProps = {
   children: React.ReactNode;
   className?: string;
@@ -29,15 +37,6 @@ export function AnimatedSection({
     </motion.div>
   );
 }
-
-export const motionListItem = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" as const },
-  }),
-};
 
 export const motionTap = {
   scale: 1,
