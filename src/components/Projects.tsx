@@ -23,7 +23,6 @@ const projects: ProjectItem[] = [
     subtitle: "Full-Stack Wholesale POS Application",
     description:
       "A complete point-of-sale solution for wholesale food operations to handle high-volume sales, inventory management, customer credit history, and automated billing.",
-    metrics: "⚡ 8% increase in sales efficiency",
     tags: ["React.js", "Python", "Oracle Database", "Inventory", "Reports"],
     href: "#",
     imageSources: [
@@ -60,7 +59,6 @@ const projects: ProjectItem[] = [
     subtitle: "Candidate Recruitment & Approval Platform",
     description:
       "Web-based hiring portal connecting retail shops with job applicants, streamlining candidate evaluation, Operations Manager validation, and HR recruitment workflows.",
-    metrics: "🚀 90% faster hiring request processing",
     tags: ["React.js / Next.js", "i18n (RTL/LTR)", "HR Dashboards", "Workflow Automation"],
     href: "#",
     imageSources: [
