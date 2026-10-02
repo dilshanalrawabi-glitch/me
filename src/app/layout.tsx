@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Muhammed Dilshan | Software Developer",
   description:
-    "Software Developer at Al Rawabi Group of Companies, Qatar. React.js, Frontend & Python. BCA 2023.",
+    "Software Developer specializing in React.js, Next.js, React Native, Python, and Oracle Database. Currently at Al Rawabi Group of Companies, Qatar.",
 };
 
 export default function RootLayout({

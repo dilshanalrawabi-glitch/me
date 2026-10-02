@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Phone, Mail, Linkedin, Github } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
@@ -9,20 +9,26 @@ import { fadeUpItem, springTap, staggerContainer } from "@/lib/motion";
 
 const links = [
   {
-    href: "mailto:your.email@example.com",
-    label: "Email",
+    href: "mailto:dilshanmambadan@gmail.com",
+    label: "dilshanmambadan@gmail.com",
     icon: Mail,
     external: false,
   },
   {
-    href: "https://linkedin.com/in/yourprofile",
-    label: "LinkedIn",
+    href: "tel:+97471837476",
+    label: "+974-71837476",
+    icon: Phone,
+    external: false,
+  },
+  {
+    href: "https://linkedin.com/in/muhammeddilshan",
+    label: "LinkedIn Profile",
     icon: Linkedin,
     external: true,
   },
   {
-    href: "https://github.com/yourusername",
-    label: "GitHub",
+    href: "https://github.com/MuhammedDilshan",
+    label: "GitHub Profile",
     icon: Github,
     external: true,
   },
@@ -35,7 +41,7 @@ export function Contact() {
         eyebrow="Let's connect"
         title="Get in"
         accent="touch"
-        description="Open to new opportunities and conversations. Drop a line and I'll get back to you."
+        description="I'm open to new opportunities, collaborations, and tech discussions. Feel free to reach out!"
       />
 
       <motion.div
@@ -51,7 +57,7 @@ export function Contact() {
             <motion.div
               key={link.label}
               variants={fadeUpItem}
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={springTap}
             >
@@ -60,21 +66,15 @@ export function Contact() {
                 variant="ghost"
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
+                className="gap-2 px-5 py-3 border border-white/10 hover:border-accent/40 bg-surface-900/60 text-surface-200 hover:text-accent"
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4 text-accent" />
                 {link.label}
               </Button>
             </motion.div>
           );
         })}
       </motion.div>
-
-      <motion.p
-        variants={fadeUpItem}
-        className="mt-8 text-center text-surface-500 text-sm"
-      >
-        Update the links above with your real email, LinkedIn, and GitHub.
-      </motion.p>
     </Section>
   );
 }

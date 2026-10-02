@@ -22,24 +22,24 @@ const highlightCard = {
 
 const highlights: { label: string; icon: LucideIcon; desc: string }[] = [
   {
-    label: "React.js & modern frontend",
+    label: "React.js & Next.js",
     icon: Component,
-    desc: "Building fast UIs",
+    desc: "Frontend & Full-Stack",
   },
   {
-    label: "Python for backend & scripts",
+    label: "Python & Oracle DB",
     icon: Server,
-    desc: "APIs & tooling",
+    desc: "Backend & Business Logic",
   },
   {
-    label: "BCA, graduated 2023",
+    label: "BCA (2020 – 2023)",
     icon: GraduationCap,
-    desc: "Computer applications",
+    desc: "University of Calicut",
   },
   {
     label: "Based in Qatar",
     icon: MapPin,
-    desc: "Al Rawabi Group",
+    desc: "Al Rawabi Group of Companies",
   },
 ];
 
@@ -50,7 +50,7 @@ export function About() {
         eyebrow="Who I am"
         title="About"
         accent="me"
-        description="Software developer focused on modern web experiences."
+        description="Software developer focused on responsive web and full-stack solutions."
       />
 
       <motion.div
@@ -66,8 +66,7 @@ export function About() {
             aria-hidden
           />
           <p className="text-surface-300 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto text-center relative">
-            A <span className="text-accent font-medium">Software Developer</span> at{" "}
-            <span className="text-accent">Al Rawabi Group of Companies</span>, Qatar, specializing in building fast, scalable, and accessible frontend applications using React.js. Passionate about creating seamless user experiences and writing clean, maintainable code. I also leverage Python for backend development and automation when needed, allowing me to contribute across multiple parts of the development stack.
+            Dedicated <span className="text-accent font-medium">Software Developer</span> experienced in front-end and full-stack development, skilled in <span className="text-surface-100 font-semibold">React.js, React Native, Next.js, JavaScript, Tailwind CSS, Python, and Oracle Database</span>. Currently working at <span className="text-accent font-medium">Al Rawabi Group of Companies</span> in Qatar, building responsive, high-performance web and mobile applications for internal systems and business operations.
           </p>
         </div>
       </motion.div>

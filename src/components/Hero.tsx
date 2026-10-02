@@ -12,7 +12,7 @@ export function Hero() {
         badge="Software Developer"
         title1="Muhammed"
         title2="Dilshan"
-        description="Building modern web experiences with React.js & frontend technologies. Based in Qatar · Al Rawabi Group of Companies"
+        description="Dedicated Software Developer experienced in front-end & full-stack development using React.js, Next.js, Python, and Oracle Database. Currently at Al Rawabi Group of Companies, Qatar."
       >
         <div className="flex flex-wrap items-center justify-center gap-4">
           <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }} transition={springTap}>
