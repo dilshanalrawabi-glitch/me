@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MapPin } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { motionListItem } from "@/lib/motion";
@@ -99,8 +100,9 @@ export function Experience() {
               </span>
             </div>
             
-            <p className="mt-1 text-surface-400 text-xs sm:text-sm font-medium">
-              📍 {job.location}
+            <p className="mt-1 text-surface-400 text-xs sm:text-sm font-medium flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
+              <span>{job.location}</span>
             </p>
 
             <ul className="mt-4 space-y-2 text-surface-300 text-sm sm:text-base leading-relaxed">
